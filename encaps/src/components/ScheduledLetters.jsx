@@ -28,32 +28,48 @@ const ScheduledLetters = ({ onWriteLetter }) => {
   useEffect(() => {
     if (!isConnected || !userLetterIds || !publicClient) return;
   
-    const fetchLetters = async () => {
-      try {
-     
-        const processed = [];
-        
-        for (let i = 0; i < userLetterIds.length; i++) {
+         const fetchLetters = async () => {
+       try {
+      
+         console.log('User letter IDs from contract:', userLetterIds);
+         console.log('Current wallet address:', address);
+         
+         const processed = [];
+         
+         for (let i = 0; i < userLetterIds.length; i++) {
           const letterId = userLetterIds[i];
           
                      try {
-             // Get letter details to get the unlock time
+             
              const letterDetail = await publicClient.readContract({
                address: "0x1872c96Cc6Ea7000821936189F26D02f7c405932",
                abi: capsuleAbi,
                functionName: 'letters',
-               args: [letterId],
+               args: [Number(letterId)],
              });
               
-              // letterDetails in ths array:[owner,encryptedLetter,unlockTime]
-              const unlockTimestamp = Number(letterDetail[2]); // unlockTimes at index 2
-              const unlockDate = new Date(unlockTimestamp * 1000);
-                             // Comparing current time w d unlock time - only the blckchn contracts the authority
+                           
+               const unlockTimestamp = Number(letterDetail[2]); // unlockTimes at index 2
+               const letterOwner = letterDetail[0]; // owner at index 0
+               const unlockDate = new Date(unlockTimestamp * 1000);
+               const isOwner = letterOwner.toLowerCase() === address.toLowerCase();
+               
+              //console.log('Letter id:',letterId);
+              //console.log('Letter owner:',letterOwner);
+              //console.log('Current address:',address);
+              //console.log('Is owner:',isOwner);
+              //console.log('Owner comparison:',letterOwner.toLowerCase(),'===',address.toLowerCase());
+               
+               if (!isOwner) {
+                 console.log('Skipping letter', letterId, 'because it belongs to', letterOwner, 'not', address);
+                 continue;
+               }
+            
                const currentTime = Math.floor(Date.now() / 1000);
                const isOpenable = currentTime >= unlockTimestamp;
               
-             
-                           console.log('Letter ID:', letterId, 'Unlock timestamp:', unlockTimestamp, 'Current time:', currentTime, 'Is openable:', isOpenable);
+              
+              //  console.log('Letter ID:', letterId, 'Unlock timestamp:', unlockTimestamp, 'Current time:', currentTime, 'Is openable:', isOpenable);
               // console.log('Unlock date:',unlockDate.toLocaleString(), 'Current date:', new Date().toLocaleString());
               // console.log('Time difference(seconds):',currentTime -unlockTimestamp);
               // console.log('Time difference (hours):', (currentTime -unlockTimestamp) /3600);
@@ -61,18 +77,19 @@ const ScheduledLetters = ({ onWriteLetter }) => {
             
             if (isOpenable) {
               
-              const letterContent = await publicClient.readContract({
-                address: "0x1872c96Cc6Ea7000821936189F26D02f7c405932",
-                abi: capsuleAbi,
-                functionName: 'readLetter',
-                args: [letterId],
-              });
+                             const letterContent = await publicClient.readContract({
+                 address: "0x1872c96Cc6Ea7000821936189F26D02f7c405932",
+                 abi: capsuleAbi,
+                 functionName: 'readLetter',
+                 args: [Number(letterId)],
+                 account: address, // to let the cntrct know whos making th call effectively
+               });
               
               const decodedContent = hexToString(letterContent);
         
               const localDate = unlockDate.getFullYear() + '-' + 
-                String(unlockDate.getMonth() + 1).padStart(2, '0') + '-' + 
-                String(unlockDate.getDate()).padStart(2, '0');
+                String(unlockDate.getMonth() + 1).padStart(2, '0') + '-' +
+                String(unlockDate.getDate()).padStart(2,'0');
               
               processed.push({
                 id: Number(letterId),
@@ -82,6 +99,8 @@ const ScheduledLetters = ({ onWriteLetter }) => {
                 isOpenable: true,
                 content: decodedContent
               });
+
+
             } else {
               // timezoness
               const localDate = unlockDate.getFullYear() + '-' + 

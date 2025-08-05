@@ -19,13 +19,12 @@ const WriteLetter = ({ onViewScheduledLetters }) => {
      if (!letterContent || !scheduledDate) {
     alert("Please fill all fields before sending.");
     return;
-
   }
+
   const encodedLetter=stringToHex(letterContent);
 
 
 const unlockTimestamp = BigInt(Math.floor(new Date(`${scheduledDate}T00:00:00`).getTime() / 1000));
-
 
     try {
       
@@ -37,7 +36,7 @@ const unlockTimestamp = BigInt(Math.floor(new Date(`${scheduledDate}T00:00:00`).
         account: address,
       })
       // await write.wait();
-      alert("Letter sent to future successfully! Redirecting to your scheduled letters...");
+      // alert("Letter sent to future successfully! Redirecting to your scheduled letters...");
       
     
       if (onViewScheduledLetters) {
