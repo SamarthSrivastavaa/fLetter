@@ -20,86 +20,86 @@ const Hero = ({ onWriteLetter, onScheduledLetters, onAbout }) => {
          }}
        />
 
-      <motion.h1 
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="text-8xl md:text-9xl lg:text-[12rem] font-black tracking-tight leading-none text-white relative z-10 mb-8"
-      >
-        CAPSULE
-      </motion.h1>   
-      
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-        className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl leading-relaxed text-center relative z-10"
-      >
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          Write letters to your future self.
-        </motion.span>
-        <br />
-        <motion.span 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="text-blue-300 font-semibold"
-        >
-          Stored anonymously on the blockchain.
-        </motion.span>
-        <br />
-        <motion.span 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          className="text-gray-400 text-lg"
-        >
-          Your thoughts, preserved in time.
-        </motion.span>
-      </motion.div>
-       <motion.div 
-         initial={{ opacity: 0, y: 40 }}
+             <motion.h1 
+         initial={{ opacity: 0, y: 50 }}
          animate={{ opacity: 1, y: 0 }}
-         transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
-         className="flex flex-col sm:flex-row gap-4 relative z-10 mb-16"
+         transition={{ duration: 0.6, ease: "easeOut" }}
+         className="text-8xl md:text-9xl lg:text-[12rem] font-black tracking-tight leading-none text-white relative z-10 mb-8"
        >
-         <motion.button 
-           whileHover={{ scale: 1.05, y: -2 }}
-           whileTap={{ scale: 0.98 }}
-           initial={{ opacity: 0, x: -20 }}
-           animate={{ opacity: 1, x: 0 }}
-           transition={{ duration: 0.6, delay: 1.8, ease: "easeOut" }}
-           className="bg-white text-black px-8 py-4 text-lg font-bold rounded-none hover:bg-gray-200 transition-all duration-300"
-           onMouseEnter={() => setIsHovered(true)}
-           onMouseLeave={() => setIsHovered(false)}
-           onClick={onWriteLetter}
+         CAPSULE
+       </motion.h1>   
+       
+       <motion.div 
+         initial={{ opacity: 0, y: 30 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+         className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl leading-relaxed text-center relative z-10"
+       >
+         <motion.span
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ duration: 0.4, delay: 0.4 }}
          >
-           WRITE YOUR FUTURE LETTER
-         </motion.button>
-         <motion.button 
-           whileHover={{ scale: 1.05, y: -2 }}
-           whileTap={{ scale: 0.98 }}
-           initial={{ opacity: 0, x: 20 }}
-           animate={{ opacity: 1, x: 0 }}
-           transition={{ duration: 0.6, delay: 2.1, ease: "easeOut" }}
-           className="bg-transparent text-white border border-white px-8 py-4 text-lg font-bold rounded-none hover:bg-white hover:text-black transition-all duration-300"
-           onClick={onScheduledLetters}
+           Write letters to your future self.
+         </motion.span>
+         <br />
+         <motion.span 
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ duration: 0.4, delay: 0.6 }}
+           className="text-blue-300 font-semibold"
          >
-           VIEW YOUR CAPSULES
-                   </motion.button>
+           Stored anonymously on the blockchain.
+         </motion.span>
+         <br />
+         <motion.span 
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ duration: 0.4, delay: 0.8 }}
+           className="text-gray-400 text-lg"
+         >
+           Your thoughts, preserved in time.
+         </motion.span>
+       </motion.div>
+               <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
+          className="flex flex-col sm:flex-row gap-4 relative z-10 mb-16"
+        >
+          <motion.button 
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 1.2, ease: "easeOut" }}
+            className="bg-white text-black px-8 py-4 text-lg font-bold rounded-none hover:bg-gray-200 transition-all duration-300"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onClick={onWriteLetter}
+          >
+            WRITE YOUR FUTURE LETTER
+          </motion.button>
+          <motion.button 
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 1.4, ease: "easeOut" }}
+            className="bg-transparent text-white border border-white px-8 py-4 text-lg font-bold rounded-none hover:bg-white hover:text-black transition-all duration-300"
+            onClick={onScheduledLetters}
+          >
+            VIEW YOUR CAPSULES
+          </motion.button>
         </motion.div>
         
-        {/* About Link */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.4, ease: "easeOut" }}
-          className="text-center relative z-10 mb-8"
-        >
+                 {/* About Link */}
+         <motion.div 
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.6, delay: 1.6, ease: "easeOut" }}
+           className="text-center relative z-10 mb-8"
+         >
           <motion.button 
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -120,40 +120,40 @@ const Hero = ({ onWriteLetter, onScheduledLetters, onAbout }) => {
         </div>
       </div>
 
-       <motion.div 
-         initial={{ opacity: 0, y: 20 }}
-         animate={{ opacity: 1, y: 0 }}
-         transition={{ duration: 0.8, delay: 2.4, ease: "easeOut" }}
-         className="flex space-x-12 text-sm text-gray-400 mt-4 relative z-10"
-       >
-         <motion.div 
-           initial={{ opacity: 0, scale: 0.8 }}
-           animate={{ opacity: 1, scale: 1 }}
-           transition={{ duration: 0.5, delay: 2.7 }}
-           className="flex items-center"
-         >
-           <span className="text-white font-bold mr-2">∞</span>
-           <span>Immortal Storage</span>
-         </motion.div>
-         <motion.div 
-           initial={{ opacity: 0, scale: 0.8 }}
-           animate={{ opacity: 1, scale: 1 }}
-           transition={{ duration: 0.5, delay: 3.0 }}
-           className="flex items-center"
-         >
-           <span className="text-white font-bold mr-2">🔐</span>
-           <span>Anonymous</span>
-         </motion.div>
-         <motion.div 
-           initial={{ opacity: 0, scale: 0.8 }}
-           animate={{ opacity: 1, scale: 1 }}
-           transition={{ duration: 0.5, delay: 3.3 }}
-           className="flex items-center"
-         >
-           <span className="text-white font-bold mr-2">⚡</span>
-           <span>Instant</span>
-         </motion.div>
-       </motion.div>
+               <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.8, ease: "easeOut" }}
+          className="flex space-x-12 text-sm text-gray-400 mt-4 relative z-10"
+        >
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: 2.0 }}
+            className="flex items-center"
+          >
+            <span className="text-white font-bold mr-2">∞</span>
+            <span>Immortal Storage</span>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: 2.2 }}
+            className="flex items-center"
+          >
+            <span className="text-white font-bold mr-2">🔐</span>
+            <span>Anonymous</span>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: 2.4 }}
+            className="flex items-center"
+          >
+            <span className="text-white font-bold mr-2">⚡</span>
+            <span>Instant</span>
+          </motion.div>
+        </motion.div>
     </div>
   );
 };

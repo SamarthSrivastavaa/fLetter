@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useAccount, useWriteContract } from "wagmi";
+import { useAccount, useWriteContract, useConnect, useConnectors, useDisconnect } from "wagmi";
 import { capsuleAbi } from '../contract/abi';
 import { stringToHex } from 'viem';
 
@@ -9,12 +9,15 @@ const WriteLetter = ({ onViewScheduledLetters }) => {
 
   const {address,isConnected}=useAccount();
   const {writeContractAsync}=useWriteContract();
-  if (!isConnected){
-    console.log("Select a wallet first")
-  }
+  const {connect,connectors,isPending}=useConnect();
+  const {disconnect}=useDisconnect();
   const [letterContent, setLetterContent] = useState('');
   const [scheduledDate, setScheduledDate] = useState('');
   const [showFooter, setShowFooter] = useState(false);
+
+  const handleConnectWallet = (connector) => {
+    connect({connector});
+  };
   
   useEffect(() => {
     const handleScroll = () => {
@@ -64,6 +67,47 @@ const unlockTimestamp = BigInt(Math.floor(new Date(`${scheduledDate}T00:00:00`).
       console.error("Error sending letter:", error);
       alert("Failed to send letter. Please try again.");
     }
+  }
+
+  if (!isConnected) {
+    return (
+      <div className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-center relative overflow-hidden pt-24 px-8">
+        <div className="w-full max-w-7xl mx-auto relative z-10 pb-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex justify-center items-center py-20"
+          >
+            <div className="bg-black/90 border border-gray-800 p-8 max-w-md w-full mx-4">
+              <div className="text-center mb-6">
+                <h2 className="text-white text-2xl font-bold mb-2">Connect Wallet</h2>
+                <p className="text-gray-400 text-sm">Choose your preferred wallet</p>
+              </div>
+              
+                             <div className="space-y-3">
+                 {connectors.map((connector) => (
+                   <button
+                     key={connector.uid || connector.id}
+                     onClick={() => handleConnectWallet(connector)}
+                     disabled={isPending}
+                     className="w-full bg-white text-black px-6 py-3 text-sm font-bold rounded-none hover:bg-transparent hover:text-white hover:border-white border border-transparent transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                   >
+                     {isPending ? 'Connecting...' : connector.name}
+                   </button>
+                 ))}
+               </div>
+              
+              <div className="text-center mt-6">
+                <p className="text-gray-400 text-sm">
+                  You need to connect your wallet to write letters to your future self.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    );
   }
 
 
@@ -139,13 +183,13 @@ const unlockTimestamp = BigInt(Math.floor(new Date(`${scheduledDate}T00:00:00`).
                   <label className="block text-white/80 text-sm font-bold mb-3">
                     Choose Date
                   </label>
-                  <input
-                    type="date"
-                    value={scheduledDate}
-                    onChange={(e) => setScheduledDate(e.target.value)}
-                    className="w-full bg-white/5 border-2 border-white/20 text-white px-6 py-4 rounded-xl focus:outline-none focus:border-yellow-400/60 transition-all duration-300 backdrop-blur-sm"
-                    min={new Date(Date.now() + 24*60*60*1000).toISOString().split('T')[0]}
-                  />
+                                     <input
+                     type="date"
+                     value={scheduledDate}
+                     onChange={(e) => setScheduledDate(e.target.value)}
+                     className="w-full bg-black/80 border-2 border-white/20 text-white px-6 py-4 rounded-xl focus:outline-none focus:border-yellow-400/60 transition-all duration-300 backdrop-blur-sm [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert"
+                     min={new Date(Date.now() + 24*60*60*1000).toISOString().split('T')[0]}
+                   />
                   <p className="text-gray-400 text-sm mt-3">
                     Select when you want to receive this letter
                   </p>
