@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAccount, useWriteContract } from "wagmi";
 import { capsuleAbi } from '../contract/abi';
 import { stringToHex } from 'viem';
@@ -13,6 +13,23 @@ const WriteLetter = ({ onViewScheduledLetters }) => {
   }
   const [letterContent, setLetterContent] = useState('');
   const [scheduledDate, setScheduledDate] = useState('');
+  const [showFooter, setShowFooter] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      if (scrollTop + windowHeight >= documentHeight - 100) {
+        setShowFooter(true);
+      } else {
+        setShowFooter(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   const handleLetterSend=async()=>{
 
@@ -36,7 +53,7 @@ const unlockTimestamp = BigInt(Math.floor(new Date(`${scheduledDate}T00:00:00`).
         account: address,
       })
       // await write.wait();
-      // alert("Letter sent to future successfully! Redirecting to your scheduled letters...");
+      // alert("Letter sent to future successfully!Redirecting to your scheduled letters..");
       
     
       if (onViewScheduledLetters) {
@@ -163,6 +180,19 @@ Remember, this will be stored securely and anonymously on the blockchain...Its j
           </div>
         </div>
       </div>
+      
+      {/* Footer */}
+      {showFooter && (
+        <footer className="fixed bottom-0 left-0 w-full bg-black/90 border-t border-yellow-500/30 z-50 transition-all duration-300 ease-in-out">
+          <div className="max-w-7xl mx-auto px-8 py-4">
+            <div className="text-center">
+              <p className="text-gray-300 text-sm">
+                Crafted with passion by <a href="https://x.com/SamarthS_1101" target="_blank" rel="noopener noreferrer" className="text-yellow-400 font-semibold hover:text-yellow-300 transition-colors underline">Samarth Srivastava</a>
+              </p>
+            </div>
+          </div>
+        </footer>
+      )}
     </div>
   );
 };

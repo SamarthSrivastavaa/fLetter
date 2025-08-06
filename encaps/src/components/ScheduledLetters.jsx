@@ -9,7 +9,24 @@ const ScheduledLetters = ({ onWriteLetter }) => {
   const [letters, setLetters] = useState([]);
   const [selectedLetter, setSelectedLetter] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showFooter, setShowFooter] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      if (scrollTop + windowHeight >= documentHeight - 100) {
+        setShowFooter(true);
+      } else {
+        setShowFooter(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const { data: userLetterIds } = useReadContract({
     address: "0x1872c96Cc6Ea7000821936189F26D02f7c405932",
@@ -335,6 +352,19 @@ const ScheduledLetters = ({ onWriteLetter }) => {
           </div>
         </div>
       </div>
+      
+             {/* Footer */}
+       {showFooter && (
+         <footer className="fixed bottom-0 left-0 w-full bg-black/90 border-t border-yellow-500/30 z-50 transition-all duration-300 ease-in-out">
+           <div className="max-w-7xl mx-auto px-8 py-4">
+             <div className="text-center">
+               <p className="text-gray-300 text-sm">
+                 Crafted with passion by <a href="https://x.com/SamarthS_1101" target="_blank" rel="noopener noreferrer" className="text-yellow-400 font-semibold hover:text-yellow-300 transition-colors underline">Samarth Srivastava</a>
+               </p>
+             </div>
+           </div>
+         </footer>
+       )}
     </div>
   );
 };
