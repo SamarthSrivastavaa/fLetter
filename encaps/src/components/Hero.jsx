@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-const Hero = ({ onWriteLetter, onScheduledLetters }) => {
+const Hero = ({ onWriteLetter, onScheduledLetters, onAbout }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -90,9 +90,27 @@ const Hero = ({ onWriteLetter, onScheduledLetters }) => {
            onClick={onScheduledLetters}
          >
            VIEW YOUR CAPSULES
-         </motion.button>
-       </motion.div>
-             <div className="absolute bottom-0 left-0 w-full h-1/3 opacity-20 relative z-10">
+                   </motion.button>
+        </motion.div>
+        
+        {/* About Link */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2.4, ease: "easeOut" }}
+          className="text-center relative z-10 mb-8"
+        >
+          <motion.button 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="text-gray-400 hover:text-white text-sm font-medium underline underline-offset-4 transition-all duration-300"
+            onClick={onAbout}
+          >
+            Learn more about Capsule →
+          </motion.button>
+        </motion.div>
+        
+              <div className="absolute bottom-0 left-0 w-full h-1/3 opacity-20 relative z-10">
         <div className="relative w-full h-full">
 
           <div className="absolute bottom-0 left-1/4 w-32 h-32 bg-gradient-to-tr from-gray-800 to-black border border-orange-500/30 transform rotate-45 animate-pulse"></div>

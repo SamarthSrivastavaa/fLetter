@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import WriteLetter from './components/WriteLetter'
 import ScheduledLetters from './components/ScheduledLetters'
+import About from './components/About'
 
 import {config} from "./config"
 import { QueryClient,QueryClientProvider } from '@tanstack/react-query'
@@ -24,6 +25,10 @@ function App() {
   const navigateToHero = () => {
     setCurrentPage('hero');
   };
+
+  const navigateToAbout = () => {
+    setCurrentPage('about');
+  };
   const client=new QueryClient();
 
   return (
@@ -33,9 +38,14 @@ function App() {
     <div className="App">
       <Navbar onNavigate={navigateToHero} />
       {currentPage === 'hero' ? (
-        <Hero onWriteLetter={navigateToWriteLetter} onScheduledLetters={navigateToScheduledLetters} />
+        <Hero onWriteLetter={navigateToWriteLetter} onScheduledLetters={navigateToScheduledLetters} onAbout={navigateToAbout} />
       ) : currentPage === 'writeLetter' ? (
         <WriteLetter onViewScheduledLetters={navigateToScheduledLetters} />
+      ) : currentPage === 'about' ? (
+        <About onNavigate={(page) => {
+          if (page === 'hero') navigateToHero();
+          else if (page === 'writeLetter') navigateToWriteLetter();
+        }} />
       ) : (
         <ScheduledLetters onWriteLetter={navigateToWriteLetter} />
       )}

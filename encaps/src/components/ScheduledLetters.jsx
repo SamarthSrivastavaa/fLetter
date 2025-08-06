@@ -296,21 +296,36 @@ const ScheduledLetters = ({ onWriteLetter }) => {
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.6, delay: 1.2 }}
-             className="text-center py-16"
+             className="flex justify-center items-center py-20"
            >
-             <div className="text-6xl mb-4">📭</div>
-             <h2 className="text-2xl font-bold text-white mb-2">No Letters Found</h2>
-             <p className="text-gray-300 mb-6">You haven't scheduled any letters yet. Write your first time capsule!</p>
-             {onWriteLetter && (
-               <motion.button 
-                 whileHover={{ scale: 1.05, y: -2 }}
-                 whileTap={{ scale: 0.98 }}
-                 onClick={onWriteLetter}
-                 className="bg-white text-black px-6 py-3 text-lg font-bold rounded-lg hover:bg-gray-200 transition-all duration-300"
-               >
-                 WRITE YOUR FIRST LETTER
-               </motion.button>
-             )}
+             <div className="bg-black/60 border-2 border-yellow-400/40 p-12 rounded-2xl backdrop-blur-md max-w-2xl mx-auto text-center">
+               <div className="flex items-center justify-center space-x-3 mb-6">
+                 <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+                 <h2 className="text-3xl font-black text-white">No Time Capsules Found</h2>
+               </div>
+               
+               <div className="text-8xl mb-8">📭</div>
+               
+               <div className="space-y-6 text-gray-300 mb-10">
+                 <p className="text-xl text-white/80 leading-relaxed">
+                   Your time capsule collection is empty. Ready to send your first message to the future?
+                 </p>
+                 <p className="text-lg text-gray-400 leading-relaxed">
+                   Write a letter to your future self and let it travel through time, waiting for the perfect moment to be discovered.
+                 </p>
+               </div>
+               
+               {onWriteLetter && (
+                 <motion.button 
+                   whileHover={{ scale: 1.05, y: -2 }}
+                   whileTap={{ scale: 0.98 }}
+                   onClick={onWriteLetter}
+                   className="bg-yellow-400 text-black px-8 py-4 text-lg font-black rounded-xl hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-yellow-400/25"
+                 >
+                   WRITE YOUR FIRST LETTER
+                 </motion.button>
+               )}
+             </div>
            </motion.div>
          ) : (
                        <motion.div 
