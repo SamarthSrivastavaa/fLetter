@@ -45,7 +45,7 @@ const About = ({ onNavigate }) => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            A revolutionary platform where your thoughts transcend time through the power of blockchain technology and military-grade encryption.
+            A revolutionary platform where your thoughts transcend time through the power of blockchain technology and complete encryption.
           </motion.p>
         </motion.div>
 
