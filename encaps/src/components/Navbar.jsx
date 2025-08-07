@@ -52,18 +52,55 @@ const Navbar = ({ onNavigate }) => {
               <p className="text-gray-400 text-xs sm:text-sm">Choose your preferred wallet</p>
             </div>
             
-            <div className="space-y-2 sm:space-y-3">
-              {connectors.map((connector) => (
-                <button
-                  key={connector.uid || connector.id}
-                  onClick={() => handleConnectWallet(connector)}
-                  disabled={isPending}
-                  className="w-full bg-white text-black px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-bold rounded-none hover:bg-transparent hover:text-white hover:border-white border border-transparent transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isPending ? 'Connecting...' : connector.name}
-                </button>
-              ))}
-            </div>
+            {connectors.length === 0 ? (
+              <div className="space-y-4 sm:space-y-5 text-center">
+                <div className="flex items-center justify-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
+                  <div className="w-2 sm:w-3 h-2 sm:h-3 bg-white/60 rounded-full animate-pulse"></div>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white">No Wallet Detected</h3>
+                </div>
+                
+                <div className="space-y-3 sm:space-y-4 text-gray-300">
+                  <p className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed font-mono">
+                    No wallet extension found on your device.
+                  </p>
+                  <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-relaxed">
+                    Please install MetaMask, Phantom, or another Web3 wallet to continue.
+                  </p>
+                </div>
+                
+                <div className="space-y-2 sm:space-y-3 pt-2 sm:pt-3">
+                  <a 
+                    href="https://metamask.io/download/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block w-full bg-white text-black px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-bold rounded-none hover:bg-transparent hover:text-white hover:border-white border border-transparent transition-all duration-300 transform hover:scale-105"
+                  >
+                    INSTALL METAMASK
+                  </a>
+                  <a 
+                    href="https://phantom.app/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block w-full bg-transparent text-white border border-white px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-bold rounded-none hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105"
+                  >
+                    INSTALL PHANTOM
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-2 sm:space-y-3">
+                {connectors.map((connector) => (
+                  <button
+                    key={connector.uid || connector.id}
+                    onClick={() => handleConnectWallet(connector)}
+                    disabled={isPending}
+                    className="w-full bg-white text-black px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-bold rounded-none hover:bg-transparent hover:text-white hover:border-white border border-transparent transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isPending ? 'Connecting...' : connector.name}
+                  </button>
+                ))}
+              </div>
+            )}
             
             <button
               onClick={() => setShowWalletModal(false)}

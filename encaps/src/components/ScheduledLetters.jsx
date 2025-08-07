@@ -296,24 +296,27 @@ const ScheduledLetters = ({ onWriteLetter }) => {
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.6, delay: 1.2 }}
-             className="flex justify-center items-center py-12 sm:py-16 md:py-20"
+             className="flex justify-center items-center py-8 sm:py-10 md:py-12"
            >
-             <div className="bg-black/60 border-2 border-yellow-400/40 p-6 sm:p-8 md:p-12 rounded-xl sm:rounded-2xl backdrop-blur-md max-w-xs sm:max-w-sm md:max-w-2xl mx-auto text-center">
-               <div className="flex items-center justify-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
-                 <div className="w-2 sm:w-3 h-2 sm:h-3 bg-yellow-400 rounded-full animate-pulse"></div>
-                 <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-white">No Time Capsules Found</h2>
+             <div className="bg-black/60 border-2 border-white/30 shadow-lg shadow-white/10 p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl backdrop-blur-md max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto text-center">
+               <div className="flex items-center justify-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
+                 <div className="w-2 sm:w-3 h-2 sm:h-3 bg-white/60 rounded-full animate-pulse"></div>
+                 <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-white">No Time Capsules Found</h2>
                </div>
                
-               <div className="text-4xl sm:text-6xl md:text-8xl mb-6 sm:mb-8">📭</div>
-               
-               <div className="space-y-4 sm:space-y-6 text-gray-300 mb-8 sm:mb-10">
-                 <p className="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed">
-                   Your time capsule collection is empty. Ready to send your first message to the future?
-                 </p>
-                 <p className="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed">
-                   Write a letter to your future self and let it travel through time, waiting for the perfect moment to be discovered.
-                 </p>
+               <div className="mb-4 sm:mb-5 md:mb-6">
+                 <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white/20 mb-1">TIME</div>
+                 <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white/30">CAPSULE</div>
                </div>
+               
+                               <div className="space-y-4 sm:space-y-5 text-gray-300 mb-6 sm:mb-7 md:mb-8">
+                  <p className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed font-mono">
+                    Your time capsule collection is empty. Ready to send your first message to the future?
+                  </p>
+                  <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-relaxed">
+                    Write a letter to your future self and let it travel through time, waiting for the perfect moment to be discovered.
+                  </p>
+                </div>
                
                {onWriteLetter && (
                  <motion.button 
