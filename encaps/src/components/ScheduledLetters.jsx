@@ -201,17 +201,17 @@ const ScheduledLetters = ({ onWriteLetter }) => {
 
   if (!isConnected) {
     return (
-      <div className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-center relative overflow-hidden pt-24 px-8">
+      <div className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-center relative overflow-hidden pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 md:px-8">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Connect Your Wallet</h1>
-          <p className="text-gray-300">Please connect your wallet to view your scheduled letters.</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">Connect Your Wallet</h1>
+          <p className="text-gray-300 text-sm sm:text-base">Please connect your wallet to view your scheduled letters.</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-center relative overflow-hidden pt-24 px-8">
+    <div className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-center relative overflow-hidden pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 md:px-8">
       {/* <div
         className="absolute top-16 left-0 right-0 bottom-0 z-0"
         style={{
@@ -226,18 +226,18 @@ const ScheduledLetters = ({ onWriteLetter }) => {
         }}
       /> */}
 
-             <div className="w-full max-w-7xl mx-auto relative z-10 pb-12">
+             <div className="w-full max-w-7xl mx-auto relative z-10 pb-8 sm:pb-10 md:pb-12">
                  <motion.div 
            initial={{ opacity: 0, y: 30 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.6, delay: 0.2 }}
-           className="text-center mb-12"
+           className="text-center mb-8 sm:mb-10 md:mb-12"
          >
            <motion.h1 
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.6, delay: 0.4 }}
-             className="text-6xl md:text-7xl font-black tracking-tight leading-none text-white mb-4"
+             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-none text-white mb-3 sm:mb-4"
            >
              YOUR TIME CAPSULES
            </motion.h1>
@@ -245,7 +245,7 @@ const ScheduledLetters = ({ onWriteLetter }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-xl text-yellow-400 max-w-2xl mx-auto mb-6"
+              className="text-base sm:text-lg md:text-xl text-yellow-400 max-w-xs sm:max-w-sm md:max-w-2xl mx-auto mb-4 sm:mb-6"
             >
               Messages from your past self, waiting to be discovered at the perfect moment.
             </motion.p>
@@ -253,17 +253,17 @@ const ScheduledLetters = ({ onWriteLetter }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex justify-center space-x-8 text-sm text-white/60 mb-8"
+              className="flex flex-col sm:flex-row sm:justify-center sm:space-x-6 lg:space-x-8 space-y-2 sm:space-y-0 text-xs sm:text-sm text-white/60 mb-6 sm:mb-8"
             >
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-center sm:justify-start space-x-2">
                 <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
                 <span>Secure & Anonymous</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-center sm:justify-start space-x-2">
                 <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
                 <span>Blockchain Stored</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-center sm:justify-start space-x-2">
                 <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
                 <span>Time-Locked</span>
               </div>
@@ -276,7 +276,7 @@ const ScheduledLetters = ({ onWriteLetter }) => {
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.6, delay: 0.8 }}
                onClick={onWriteLetter}
-               className="bg-transparent text-white border border-white px-6 py-3 text-lg font-bold rounded-none hover:bg-white hover:text-black transition-all duration-300"
+               className="bg-transparent text-white border border-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base md:text-lg font-bold rounded-none hover:bg-white hover:text-black transition-all duration-300"
              >
                WRITE NEW LETTER
              </motion.button>
@@ -287,30 +287,30 @@ const ScheduledLetters = ({ onWriteLetter }) => {
            <motion.div 
              initial={{ opacity: 0 }}
              animate={{ opacity: 1 }}
-             className="flex justify-center items-center h-64"
+             className="flex justify-center items-center h-32 sm:h-48 md:h-64"
            >
-             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-orange-500"></div>
+             <div className="animate-spin rounded-full h-12 sm:h-16 w-12 sm:w-16 border-b-2 border-orange-500"></div>
            </motion.div>
                   ) : letters.length === 0 ? (
            <motion.div 
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.6, delay: 1.2 }}
-             className="flex justify-center items-center py-20"
+             className="flex justify-center items-center py-12 sm:py-16 md:py-20"
            >
-             <div className="bg-black/60 border-2 border-yellow-400/40 p-12 rounded-2xl backdrop-blur-md max-w-2xl mx-auto text-center">
-               <div className="flex items-center justify-center space-x-3 mb-6">
-                 <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
-                 <h2 className="text-3xl font-black text-white">No Time Capsules Found</h2>
+             <div className="bg-black/60 border-2 border-yellow-400/40 p-6 sm:p-8 md:p-12 rounded-xl sm:rounded-2xl backdrop-blur-md max-w-xs sm:max-w-sm md:max-w-2xl mx-auto text-center">
+               <div className="flex items-center justify-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
+                 <div className="w-2 sm:w-3 h-2 sm:h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+                 <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-white">No Time Capsules Found</h2>
                </div>
                
-               <div className="text-8xl mb-8">📭</div>
+               <div className="text-4xl sm:text-6xl md:text-8xl mb-6 sm:mb-8">📭</div>
                
-               <div className="space-y-6 text-gray-300 mb-10">
-                 <p className="text-xl text-white/80 leading-relaxed">
+               <div className="space-y-4 sm:space-y-6 text-gray-300 mb-8 sm:mb-10">
+                 <p className="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed">
                    Your time capsule collection is empty. Ready to send your first message to the future?
                  </p>
-                 <p className="text-lg text-gray-400 leading-relaxed">
+                 <p className="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed">
                    Write a letter to your future self and let it travel through time, waiting for the perfect moment to be discovered.
                  </p>
                </div>
@@ -320,7 +320,7 @@ const ScheduledLetters = ({ onWriteLetter }) => {
                    whileHover={{ scale: 1.05, y: -2 }}
                    whileTap={{ scale: 0.98 }}
                    onClick={onWriteLetter}
-                   className="bg-yellow-400 text-black px-8 py-4 text-lg font-black rounded-xl hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-yellow-400/25"
+                   className="bg-yellow-400 text-black px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-black rounded-lg sm:rounded-xl hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-yellow-400/25"
                  >
                    WRITE YOUR FIRST LETTER
                  </motion.button>
@@ -332,22 +332,22 @@ const ScheduledLetters = ({ onWriteLetter }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="space-y-8"
+              className="space-y-6 sm:space-y-8"
             >
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1.1 }}
-                className="text-center mb-8"
+                className="text-center mb-6 sm:mb-8"
               >
-                <div className="inline-flex items-center space-x-3 bg-black/40 border border-yellow-400/30 px-6 py-3 rounded-full">
+                <div className="inline-flex items-center space-x-2 sm:space-x-3 bg-black/40 border border-yellow-400/30 px-4 sm:px-6 py-2 sm:py-3 rounded-full">
                   <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-                  <span className="text-white/80 text-sm font-medium">
+                  <span className="text-white/80 text-xs sm:text-sm font-medium">
                     {letters.length} {letters.length === 1 ? 'Time Capsule' : 'Time Capsules'} • {letters.filter(l => l.isOpenable).length} Ready to Open
                   </span>
                 </div>
               </motion.div>
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                {(showAllLetters ? letters : previewLetters).map((letter, index) => (
                              <motion.div
                  key={letter.id}
@@ -355,15 +355,15 @@ const ScheduledLetters = ({ onWriteLetter }) => {
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ duration: 0.6, delay: 1.2 + (index * 0.1) }}
                  whileHover={{ scale: 1.02, y: -4 }}
-                                   className={`bg-black/60 border-2 backdrop-blur-sm p-8 rounded-xl transition-all duration-300 cursor-pointer ${
+                                   className={`bg-black/60 border-2 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-lg sm:rounded-xl transition-all duration-300 cursor-pointer ${
                     letter.isOpenable 
                       ? 'border-green-500/40 hover:border-green-500/60 shadow-lg shadow-green-500/10' 
                       : 'border-white/20 hover:border-white/30 shadow-lg shadow-white/5'
                   }`}
                  onClick={() => letter.isOpenable && handleOpenLetter(letter)}
                >
-                                 <div className="flex items-center justify-between mb-6">
-                                       <span className={`text-sm font-bold px-4 py-2 rounded-full ${
+                                 <div className="flex items-center justify-between mb-4 sm:mb-6">
+                                       <span className={`text-xs sm:text-sm font-bold px-2 sm:px-4 py-1 sm:py-2 rounded-full ${
                       letter.isOpenable 
                         ? 'bg-green-500/20 text-green-400 border border-green-500/40' 
                         : 'bg-white/10 text-white/60 border border-white/20'
@@ -375,27 +375,27 @@ const ScheduledLetters = ({ onWriteLetter }) => {
                     </span>
                  </div>
 
-                                 <div className="mb-6">
-                   <h3 className="text-xl font-bold text-white mb-3">
+                                 <div className="mb-4 sm:mb-6">
+                   <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                      {formatDate(letter.scheduledDate)}
                    </h3>
-                                       <p className="text-sm text-yellow-400 mb-4 font-medium">
+                                       <p className="text-xs sm:text-sm text-yellow-400 mb-3 sm:mb-4 font-medium">
                       {getDaysUntil(letter.scheduledDate, letter.unlockTimestamp)}
                     </p>
                  </div>
 
-                 <div className="mb-6">
-                                       <p className="text-white/80 text-sm leading-relaxed line-clamp-3">
+                 <div className="mb-4 sm:mb-6">
+                                       <p className="text-white/80 text-xs sm:text-sm leading-relaxed line-clamp-3">
                       {letter.preview}
                     </p>
                  </div>
 
-                                 <div className="flex items-center justify-between pt-4 border-t border-gray-700/30">
-                                       <div className="text-xs text-white/60 bg-white/10 px-3 py-1 rounded-full border border-white/20">
+                                 <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-700/30">
+                                       <div className="text-xs text-white/60 bg-white/10 px-2 sm:px-3 py-1 rounded-full border border-white/20">
                       {letter.scheduledDate}
                     </div>
                                          {letter.isOpenable && (
-                       <button className="text-green-400 hover:text-green-300 text-sm font-medium bg-green-500/10 px-3 py-1 rounded-full transition-colors border border-green-500/20">
+                       <button className="text-green-400 hover:text-green-300 text-xs sm:text-sm font-medium bg-green-500/10 px-2 sm:px-3 py-1 rounded-full transition-colors border border-green-500/20">
                          Open Letter →
                        </button>
                      )}
@@ -409,13 +409,13 @@ const ScheduledLetters = ({ onWriteLetter }) => {
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ duration: 0.6, delay: 1.4 }}
-                 className="text-center pt-8"
+                 className="text-center pt-6 sm:pt-8"
                >
                  <motion.button 
                    whileHover={{ scale: 1.05, y: -2 }}
                    whileTap={{ scale: 0.98 }}
                    onClick={() => setShowAllLetters(true)}
-                   className="bg-transparent text-white border border-white px-8 py-4 text-lg font-bold rounded-lg hover:bg-white hover:text-black transition-all duration-300"
+                   className="bg-transparent text-white border border-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-bold rounded-lg hover:bg-white hover:text-black transition-all duration-300"
                  >
                    VIEW ALL {letters.length} LETTERS
                  </motion.button>
@@ -426,38 +426,38 @@ const ScheduledLetters = ({ onWriteLetter }) => {
 
                  {selectedLetter && (
            <div className="fixed inset-0 bg-black/95 backdrop-blur-xl z-50 flex items-center justify-center p-4">
-             <div className="bg-black border-2 border-yellow-400/60 max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl relative">
-               <div className="p-10">
-                 <div className="flex items-center justify-between mb-10">
-                   <div className="flex items-center space-x-6">
-                     <div className="w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
-                     <h2 className="text-3xl font-black text-white tracking-tight">
+             <div className="bg-black border-2 border-yellow-400/60 max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-2xl relative">
+               <div className="p-4 sm:p-6 md:p-10">
+                 <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-10">
+                   <div className="flex items-center space-x-3 sm:space-x-6">
+                     <div className="w-3 sm:w-4 h-3 sm:h-4 bg-yellow-400 rounded-full animate-pulse"></div>
+                     <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-white tracking-tight">
                        Letter from {formatDate(selectedLetter.scheduledDate)}
                      </h2>
                    </div>
                    <button
                      onClick={closeLetter}
-                     className="text-gray-400 hover:text-yellow-400 text-3xl transition-all duration-300 hover:scale-110 transform"
+                     className="text-gray-400 hover:text-yellow-400 text-2xl sm:text-3xl transition-all duration-300 hover:scale-110 transform"
                    >
                      ×
                    </button>
                  </div>
                  
-                 <div className="relative mb-10">
-                   <div className="bg-white/5 border border-white/20 p-10 rounded-2xl backdrop-blur-md">
-                     <div className="text-white/90 whitespace-pre-wrap font-mono text-xl leading-relaxed">
+                 <div className="relative mb-6 sm:mb-8 md:mb-10">
+                   <div className="bg-white/5 border border-white/20 p-4 sm:p-6 md:p-10 rounded-xl sm:rounded-2xl backdrop-blur-md">
+                     <div className="text-white/90 whitespace-pre-wrap font-mono text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
                        {selectedLetter.content}
                      </div>
                    </div>
                  </div>
 
-                 <div className="flex justify-between items-center text-sm border-t border-white/20 pt-8">
-                   <div className="flex items-center space-x-3">
-                     <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-xs sm:text-sm border-t border-white/20 pt-4 sm:pt-6 md:pt-8 space-y-2 sm:space-y-0">
+                   <div className="flex items-center space-x-2 sm:space-x-3">
+                     <div className="w-2 sm:w-3 h-2 sm:h-3 bg-yellow-400 rounded-full"></div>
                      <span className="font-bold text-white/80">Opened on {new Date().toLocaleDateString()}</span>
                    </div>
-                   <div className="flex items-center space-x-3">
-                     <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                   <div className="flex items-center space-x-2 sm:space-x-3">
+                     <div className="w-2 sm:w-3 h-2 sm:h-3 bg-yellow-400 rounded-full"></div>
                      <span className="font-bold text-white/80">Originally scheduled for {selectedLetter.scheduledDate}</span>
                    </div>
                  </div>
@@ -466,12 +466,12 @@ const ScheduledLetters = ({ onWriteLetter }) => {
            </div>
          )}
 
-                 <div className="absolute bottom-0 left-0 w-full h-1/3 opacity-20 relative z-10 mt-16">
+                 <div className="absolute bottom-0 left-0 w-full h-1/3 opacity-20 relative z-10 mt-8 sm:mt-12 md:mt-16">
           <div className="relative w-full h-full">
-            <div className="absolute bottom-0 left-1/4 w-32 h-32 bg-gradient-to-tr from-gray-800 to-black border border-orange-500/30 transform rotate-45 animate-pulse"></div>
-            <div className="absolute bottom-20 right-1/3 w-24 h-24 bg-gradient-to-bl from-gray-900 to-black border border-red-500/30 transform -rotate-12 animate-pulse" style={{animationDelay: '1s'}}></div>
-            <div className="absolute bottom-10 right-1/4 w-40 h-20 bg-gradient-to-r from-gray-800 to-black border border-orange-500/20 transform skew-x-12 animate-pulse" style={{animationDelay: '2s'}}></div>
-            <div className="absolute bottom-32 left-1/2 w-16 h-16 bg-gradient-to-br from-gray-900 to-black border border-red-500/40 transform rotate-30 animate-pulse" style={{animationDelay: '0.5s'}}></div>
+            <div className="absolute bottom-0 left-1/4 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 bg-gradient-to-tr from-gray-800 to-black border border-orange-500/30 transform rotate-45 animate-pulse"></div>
+            <div className="absolute bottom-10 sm:bottom-16 md:bottom-20 right-1/3 w-12 sm:w-16 md:w-24 h-12 sm:h-16 md:h-24 bg-gradient-to-bl from-gray-900 to-black border border-red-500/30 transform -rotate-12 animate-pulse" style={{animationDelay: '1s'}}></div>
+            <div className="absolute bottom-5 sm:bottom-8 md:bottom-10 right-1/4 w-20 sm:w-28 md:w-40 h-10 sm:h-14 md:h-20 bg-gradient-to-r from-gray-800 to-black border border-orange-500/20 transform skew-x-12 animate-pulse" style={{animationDelay: '2s'}}></div>
+            <div className="absolute bottom-16 sm:bottom-24 md:bottom-32 left-1/2 w-8 sm:w-12 md:w-16 h-8 sm:h-12 md:h-16 bg-gradient-to-br from-gray-900 to-black border border-red-500/40 transform rotate-30 animate-pulse" style={{animationDelay: '0.5s'}}></div>
           </div>
         </div>
       </div>
@@ -479,9 +479,9 @@ const ScheduledLetters = ({ onWriteLetter }) => {
              {/*Foote */}
        {showFooter && (
          <footer className="fixed bottom-0 left-0 w-full bg-black/90 border-t border-yellow-500/30 z-50 transition-all duration-300 ease-in-out">
-           <div className="max-w-7xl mx-auto px-4 py-6">
+           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6">
              <div className="text-center">
-               <p className="text-gray-300 text-sm">
+               <p className="text-gray-300 text-xs sm:text-sm">
                  Crafted with passion by <a href="https://x.com/SamarthS_1101" target="_blank" rel="noopener noreferrer" className="text-yellow-400 font-semibold hover:text-yellow-300 transition-colors underline">Samarth Srivastava</a>
                </p>
              </div>
