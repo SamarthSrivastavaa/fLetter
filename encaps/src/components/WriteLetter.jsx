@@ -71,8 +71,22 @@ const unlockTimestamp = BigInt(Math.floor(new Date(`${scheduledDate}T00:00:00`).
 
   if (!isConnected) {
     return (
-      <div className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-center relative overflow-hidden pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 md:px-8">
-        <div className="w-full max-w-7xl mx-auto relative z-10 pb-8 sm:pb-10 md:pb-12">
+      <div className="min-h-screen w-full bg-black relative">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: "#000000",
+            backgroundImage: `
+              radial-gradient(circle at 1px 1px, rgba(139, 92, 246, 0.2) 1px, transparent 0),
+              radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.18) 1px, transparent 0),
+              radial-gradient(circle at 1px 1px, rgba(236, 72, 153, 0.15) 1px, transparent 0)
+            `,
+            backgroundSize: "20px 20px, 30px 30px, 25px 25px",
+            backgroundPosition: "0 0, 10px 10px, 15px 5px",
+          }}
+        />
+
+        <div className="relative z-10 pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 md:px-8 pb-8 sm:pb-10 md:pb-12">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -112,46 +126,46 @@ const unlockTimestamp = BigInt(Math.floor(new Date(`${scheduledDate}T00:00:00`).
 
 
   return (
-    <div className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-center relative overflow-hidden pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 md:px-8">
-
-      {/* <div
-        className="absolute top-16 left-0 right-0 bottom-0 z-0"
+    <div className="min-h-screen w-full bg-black relative">
+      <div
+        className="absolute inset-0 z-0"
         style={{
           background: "#000000",
           backgroundImage: `
-            linear-gradient(to right, rgba(120, 130, 140, 0.25) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(120, 130, 140, 0.25) 1px, transparent 1px),
-            linear-gradient(to right, rgba(120, 130, 140, 0.15) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(120, 130, 140, 0.15) 1px, transparent 1px)
+            radial-gradient(circle at 1px 1px, rgba(139, 92, 246, 0.2) 1px, transparent 0),
+            radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.18) 1px, transparent 0),
+            radial-gradient(circle at 1px 1px, rgba(236, 72, 153, 0.15) 1px, transparent 0)
           `,
-          backgroundSize: "120px 120px, 120px 120px, 40px 40px, 40px 40px",
+          backgroundSize: "20px 20px, 30px 30px, 25px 25px",
+          backgroundPosition: "0 0, 10px 10px, 15px 5px",
         }}
-      />     */}
-             <div className="w-full max-w-7xl mx-auto relative z-10 pb-8 sm:pb-10 md:pb-12">
-         <motion.div 
-           initial={{ opacity: 0, y: 30 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.6, delay: 0.2 }}
-           className="text-center mb-8 sm:mb-10 md:mb-12"
-         >
-           <motion.h1 
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ duration: 0.6, delay: 0.4 }}
-             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-none text-white mb-3 sm:mb-4"
-           >
-             WRITE YOUR LETTER
-           </motion.h1>
-           <motion.p 
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ duration: 0.6, delay: 0.6 }}
-             className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-2xl mx-auto px-2 sm:px-4"
-           >
-             Pen your thoughts for the future. Choose when you want to receive this message.
-           </motion.p>
-         </motion.div>  
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 items-start">
+      />
+
+      <div className="relative z-10 pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 md:px-8 pb-8 sm:pb-10 md:pb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mb-8 sm:mb-10 md:mb-12"
+        >
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-none text-white mb-3 sm:mb-4"
+          >
+            WRITE YOUR LETTER
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-2xl mx-auto px-2 sm:px-4"
+          >
+            Pen your thoughts for the future. Choose when you want to receive this message.
+          </motion.p>
+        </motion.div>  
+       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 items-start">
           <div className="lg:col-span-1 space-y-4 sm:space-y-6">
             <div className="bg-black/60 border-2 border-yellow-400/40 p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl backdrop-blur-md">
               <div className="flex items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
@@ -250,7 +264,7 @@ Remember, this will be stored securely and anonymously on the blockchain...Its j
         </div>
       </div>
       
-      {/* Footer */}
+        {/*Foote */}
       {showFooter && (
         <footer className="fixed bottom-0 left-0 w-full bg-black/90 border-t border-yellow-500/30 z-50 transition-all duration-300 ease-in-out">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4">

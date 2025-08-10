@@ -211,21 +211,25 @@ const ScheduledLetters = ({ onWriteLetter }) => {
   }
 
   return (
+    
     <div className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-center relative overflow-hidden pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 md:px-8">
-      {/* <div
-        className="absolute top-16 left-0 right-0 bottom-0 z-0"
-        style={{
-          background: "#000000",
-          backgroundImage: `
-            linear-gradient(to right, rgba(120, 130, 140, 0.25) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(120, 130, 140, 0.25) 1px, transparent 1px),
-            linear-gradient(to right, rgba(120, 130, 140, 0.15) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(120, 130, 140, 0.15) 1px, transparent 1px)
-          `,
-          backgroundSize: "120px 120px, 120px 120px, 40px 40px, 40px 40px",
-        }}
-      /> */}
 
+<div className="min-h-screen w-full bg-black relative">
+  {/* Dark Noise Colored Background */}
+  <div
+    className="absolute inset-0 z-0"
+    style={{
+      background: "#000000",
+      backgroundImage: `
+        radial-gradient(circle at 1px 1px, rgba(139, 92, 246, 0.2) 1px, transparent 0),
+        radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.18) 1px, transparent 0),
+        radial-gradient(circle at 1px 1px, rgba(236, 72, 153, 0.15) 1px, transparent 0)
+      `,
+      backgroundSize: "20px 20px, 30px 30px, 25px 25px",
+      backgroundPosition: "0 0, 10px 10px, 15px 5px",
+    }}
+  />
+  
              <div className="w-full max-w-7xl mx-auto relative z-10 pb-8 sm:pb-10 md:pb-12">
                  <motion.div 
            initial={{ opacity: 0, y: 30 }}
@@ -491,6 +495,7 @@ const ScheduledLetters = ({ onWriteLetter }) => {
            </div>
          </footer>
        )}
+    </div>
     </div>
   );
 };
